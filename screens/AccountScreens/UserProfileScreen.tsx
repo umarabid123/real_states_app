@@ -70,7 +70,7 @@ const UserProfileScreen = () => {
           onPress={() => setActiveModal(true)}
         />
       </View>
-      {activeModal && (
+      {activeModal && (   
         <Modal
           isVisible={activeModal}
           style={{position: 'relative', margin: 0}}
