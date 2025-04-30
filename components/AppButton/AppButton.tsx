@@ -9,7 +9,7 @@ interface AppButtonProps {
   type?: string;
   source?: any;
   iconStyle?: object;
-  containerStyle?: object;
+  containerStyle?: object;  
   route?: string;
   params?: object;
   onPress?: () => void;
