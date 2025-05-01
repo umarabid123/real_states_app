@@ -12,6 +12,7 @@ import LocationEmptyScreen from './screens/AccountScreens/LocationEmptyScreen'
 import AccountPreferable from './screens/AccountScreens/AccountPreferable'
 import AccountPayment from './screens/AccountScreens/AccountPayment'
 import UserProfileScreen from './screens/AccountScreens/UserProfileScreen'
+import HomeScreen from './screens/HomeScreens/HomeScreen'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -27,7 +28,7 @@ const App = () => {
         <Stack.Screen name='Preferable' component={AccountPreferable} />
         <Stack.Screen name='Payment' component={AccountPayment} />
         <Stack.Screen name='Profile' component={UserProfileScreen} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

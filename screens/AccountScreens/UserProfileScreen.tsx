@@ -126,7 +126,7 @@ const UserProfileScreen = () => {
                 width: 278,
                 marginTop: 20,
               }}
-              onPress={() => setActiveModal(false)}
+             route='Home'
             />
           </View>
         </Modal>
