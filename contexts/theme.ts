@@ -6,5 +6,6 @@ export const Colors = {
     lightGray:"rgba(255, 255, 255, 1)",
     softGray:'rgba(245, 244, 248, 1)',
     mediumBarelyGray:"#A1A5C1",
-    lightBlue:"#234F68"
+    lightBlue:"#234F68",
+    
 }

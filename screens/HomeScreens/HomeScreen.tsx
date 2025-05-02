@@ -1,5 +1,5 @@
 import {FlatList, Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {globalStyle} from '../../styles/globalStyle';
 import AppText from '../../components/AppText/AppText';
 import {Colors} from '../../contexts/theme';
@@ -7,6 +7,7 @@ import {wp} from '../../contexts/constant';
 import AppButton from '../../components/AppButton/AppButton';
 
 const HomeScreen = () => {
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <View style={[globalStyle.container, {justifyContent: 'flex-start'}]}>
       {/* header  */}
@@ -101,20 +102,21 @@ const HomeScreen = () => {
 
       <FlatList
         data={['All', 'House', 'Apartment', 'House', 'Apartment']}
-        renderItem={({item}) => (
+        renderItem={({item,index}) => (
           <AppButton
             text={item}
             containerStyle={{
-              backgroundColor: Colors.softGray,
+              backgroundColor: activeTab === index ? Colors.lightBlue : Colors.softGray,
               width: 'auto',
               height: 55,
               justifyContent: 'center',
               alignItems: 'center',
               paddingHorizontal: 17,
-              borderRadius:26
+              borderRadius:26,
+
             }}
-            textStyle={{color: Colors.secondary, fontWeight: 500}}
-            
+            textStyle={{color: activeTab === index ? Colors.white:Colors.secondary, fontWeight: 500}}
+            onPress={() => setActiveTab(index)}
           />
         )}
         horizontal
