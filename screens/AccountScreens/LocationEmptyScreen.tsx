@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import {
   Image,
+  KeyboardAvoidingView,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -83,67 +85,71 @@ const LocationEmptyScreen = () => {
 
         {activeModal && (
           <Modal>
-            <MapView
-              style={styles.mapModalStyle}
-              onRegionChangeComplete={console.log}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-            />
-
-            <Header headerStyle={{position: 'absolute', top: 14, left: 14}} />
-
-            <View style={[styles.searchBox, styles.modalSearchBox]}>
-              <View style={styles.searchRow}>
-                <Image
-                  source={require('../../assets/images/search-icon.png')}
-                  resizeMode="cover"
-                />
-                <TextInput
-                  placeholder="Try find “how to”"
-                  style={styles.searchInput}
-                />
-              </View>
-              <Image
-                source={require('../../assets/images/mic.png')}
-                resizeMode="cover"
-                style={{borderLeftWidth: 4, borderColor: '#000'}}
+            <KeyboardAvoidingView
+              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+              style={{flex: 1}}>
+              <MapView
+                style={styles.mapModalStyle}
+                onRegionChangeComplete={console.log}
+                initialRegion={{
+                  latitude: 37.78825,
+                  longitude: -122.4324,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
               />
-            </View>
 
-            <View style={styles.locationDetailContainer}>
-              <AppText
-                text={'Location detail'}
-                fontSize={18}
-                fontWeight={700}
-                color={Colors.secondary}
-              />
-              <View style={styles.locationRow}>
-                <View style={styles.locationIconBox}>
+              <Header headerStyle={{position: 'absolute', top: 14, left: 14}} />
+
+              <View style={[styles.searchBox, styles.modalSearchBox]}>
+                <View style={styles.searchRow}>
                   <Image
-                    source={require('../../assets/images/location-pin-map.png')}
+                    source={require('../../assets/images/search-icon.png')}
                     resizeMode="cover"
                   />
+                  <TextInput
+                    placeholder="Try find “how to”"
+                    style={styles.searchInput}
+                  />
                 </View>
-                <AppText
-                  text={
-                    'Srengseng, Kembangan, West Jakarta City, Jakarta 11630'
-                  }
-                  fontSize={12}
-                  color={Colors.mediumGray}
-                  style={styles.locationText}
+                <Image
+                  source={require('../../assets/images/mic.png')}
+                  resizeMode="cover"
+                  style={{borderLeftWidth: 4, borderColor: '#000'}}
                 />
               </View>
-            </View>
 
-            <AppButton
-              text="Choose your location"
-              containerStyle={styles.chooseLocationButton}
-              onPress={() => setActiveModal(false)}
-            />
+              <View style={styles.locationDetailContainer}>
+                <AppText
+                  text={'Location detail'}
+                  fontSize={18}
+                  fontWeight={700}
+                  color={Colors.secondary}
+                />
+                <View style={styles.locationRow}>
+                  <View style={styles.locationIconBox}>
+                    <Image
+                      source={require('../../assets/images/location-pin-map.png')}
+                      resizeMode="cover"
+                    />
+                  </View>
+                  <AppText
+                    text={
+                      'Srengseng, Kembangan, West Jakarta City, Jakarta 11630'
+                    }
+                    fontSize={12}
+                    color={Colors.mediumGray}
+                    style={styles.locationText}
+                  />
+                </View>
+              </View>
+
+              <AppButton
+                text="Choose your location"
+                containerStyle={styles.chooseLocationButton}
+                onPress={() => setActiveModal(false)}
+              />
+            </KeyboardAvoidingView>
           </Modal>
         )}
       </ScrollView>
@@ -258,7 +264,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 24,
     width: 278,
-    left:50,
+    left: 50,
     marginHorizontal: 'auto',
   },
 });
