@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     backgroundColor: Colors.primary,
-    width: wp(90),
+    width: wp(88),
     marginTop: 50,
   },
   mapModalStyle: {
