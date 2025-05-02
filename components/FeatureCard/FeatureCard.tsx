@@ -10,14 +10,18 @@ const FeatureCard = () => {
       style={{
         backgroundColor: Colors.softGray,
         width: 268,
-        paddingHorizontal: 8,
+        padding: 8,
+        flexDirection:'row',
+        alignItems:'center',
+        gap:12,
+        borderRadius:30
       }}>
 
         {/* image section  */}
-      <View>
+      <View style={{position:'relative', width:134}}>
       <Image
-        source={require('../../assets/images/feature-card.png')}
-        style={{width: 130, height: 140}}
+        source={require('../../assets/images/bg-img.jpg')}
+        style={{width: 130, height: 140, borderRadius:24}}
       />
       <View
         style={{
@@ -27,6 +31,9 @@ const FeatureCard = () => {
           borderRadius: 50,
           justifyContent: 'center',
           alignItems: 'center',
+          position:'absolute',
+          top:12,
+          left:8
         }}>
         <Image source={require('../../assets/images/heart-white.png')} />
       </View>
@@ -36,7 +43,12 @@ const FeatureCard = () => {
           width: 63,
           paddingVertical: 9,
           backgroundColor: Colors.lightBlue,
+          position:'absolute',
+          bottom:14,
+          left:12,
+          borderRadius:8
         }}
+        textStyle={{fontSize:8, fontWeight:400}}
       />
       </View>
 
@@ -46,10 +58,19 @@ const FeatureCard = () => {
 
         {/* rate section  */}
 
-        <View style={{flexDirection:'row', gap:2, alignItems:'center'}}>
+        <View style={{flexDirection:'row', gap:3, alignItems:'center',paddingVertical:8}}>
             <Image source={require('../../assets/images/star.png')} />
             <AppText text={'4.9'} fontSize={8} fontWeight={700} color={Colors.lightBlue} />
         </View>
+
+        {/* location section  */}
+
+        <View style={{flexDirection:'row', gap:3, alignItems:'center',paddingBottom:29}}>
+            <Image source={require('../../assets/images/location-pin.png')} />
+            <AppText text={'Jakarta, Indonesia'} fontSize={8} color={Colors.lightBlue} />
+        </View>
+
+        <AppText text={'$290'} fontWeight={600} fontSize={16} color={Colors.secondary} type='subText' subText='/month' subTextStyle={{fontWeight:500,fontSize:8}} />
       </View>
     </View>
   );

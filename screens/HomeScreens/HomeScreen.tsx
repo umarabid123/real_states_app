@@ -13,6 +13,8 @@ import AppText from '../../components/AppText/AppText';
 import {Colors} from '../../contexts/theme';
 import {wp} from '../../contexts/constant';
 import AppButton from '../../components/AppButton/AppButton';
+import FeatureCard from '../../components/FeatureCard/FeatureCard';
+import CategoryCard from '../../components/CategoryCard/CategoryCard';
 
 const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -108,6 +110,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
+      {/* category buttons  */}
       <View style={{height: 120}}>
         <FlatList
           data={['All', 'House', 'Apartment', 'House', 'Apartment']}
@@ -138,61 +141,22 @@ const HomeScreen = () => {
         />
       </View>
 
-     <FlatList
-     data={[1,2,3,4,5]}
-     renderItem={({item}) =>(
-      <View
-      style={{
-        width: 270,
-        height: 180,
-        borderRadius: 30,
-        borderBottomStartRadius:0,
-        overflow: 'hidden',
-        backgroundColor: 'red', // for test
-      }}>
-      <ImageBackground
-        source={require('../../assets/images/bg-img.jpg')}
-        resizeMode="cover"
-        style={{width: '100%', height: '100%',justifyContent: 'center'}}>
-        <View style={{paddingLeft: 20,paddingBottom:20}}>
-          <AppText
-            text={'Halloween \nSale!'}
-            fontSize={18}
-            fontWeight={700}
-            color={Colors.white}
-            style={{letterSpacing: 1}}
-          />
-          <AppText
-            text={'All discount up to 60%'}
-            fontSize={10}
-            color={Colors.white}
-          />
-        </View>
-        <AppButton
-          type="notText"
-          source={require('../../assets/images/right-arrow-icon.png')}
-          containerStyle={{
-            width: 93,
-            borderRadius: 0,
-            borderTopEndRadius: 20,
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            backgroundColor: Colors.lightBlue,
-            justifyContent: 'center',
-            alignItem: 'center',
-            padding: 0,
-            paddingVertical:26
-          }}
-        />
-      </ImageBackground>
-    </View>
-     )}
-     horizontal
-     ItemSeparatorComponent={ 
-      () => <View style={{width: 20}} />
-     } />
-     
+      {/* Category card section top  */}
+      <FlatList
+        data={[1, 2, 3, 4, 5]}
+        renderItem={({item}) => <CategoryCard />}
+        horizontal
+        ItemSeparatorComponent={() => <View style={{width: 20}} />}
+      />
+
+      {/* Feature Card section  */}
+      <FlatList
+        data={[1, 2, 3, 4, 5]}
+        renderItem={({item}) => <FeatureCard />}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        ItemSeparatorComponent={() => <View style={{width: 10}} />}
+      />
     </View>
   );
 };
