@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import { Image, Modal, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import React, {useState} from 'react';
+import {
+  Image,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import MapView from 'react-native-maps';
 import Header from '../../components/Header/Header';
-import { wp } from '../../contexts/constant';
-import { globalStyle } from '../../styles/globalStyle';
+import {wp} from '../../contexts/constant';
+import {globalStyle} from '../../styles/globalStyle';
 import AppText from '../../components/AppText/AppText';
-import { Colors } from '../../contexts/theme';
+import {Colors} from '../../contexts/theme';
 import AppButton from '../../components/AppButton/AppButton';
 
 const LocationEmptyScreen = () => {
@@ -13,7 +21,9 @@ const LocationEmptyScreen = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}>
         <Header type={'button'} />
 
         <View style={styles.textContainer}>
@@ -22,9 +32,9 @@ const LocationEmptyScreen = () => {
             color={Colors.secondary}
             fontSize={25}
             fontWeight={500}
-            type='subText'
+            type="subText"
             subTextStyle={styles.subTextStyle}
-            subText='location '
+            subText="location "
           />
           <AppText
             text={'You can edit this later on your account setting.'}
@@ -46,9 +56,14 @@ const LocationEmptyScreen = () => {
             }}
           />
 
-          <Pressable style={styles.searchBox} onPress={() => setActiveModal(true)}>
+          <Pressable
+            style={styles.searchBox}
+            onPress={() => setActiveModal(true)}>
             <View style={styles.searchContent}>
-              <Image source={require('../../assets/images/location-pin.png')} resizeMode="cover" />
+              <Image
+                source={require('../../assets/images/location-pin.png')}
+                resizeMode="cover"
+              />
               <AppText
                 text={'Location detail'}
                 fontSize={12}
@@ -60,9 +75,9 @@ const LocationEmptyScreen = () => {
           </Pressable>
 
           <AppButton
-            text='Next'
+            text="Next"
             containerStyle={styles.nextButton}
-            route='Preferable'
+            route="Preferable"
           />
         </View>
 
@@ -79,11 +94,14 @@ const LocationEmptyScreen = () => {
               }}
             />
 
-            <Header headerStyle={{ position: 'absolute', top: 14, left: 14 }} />
+            <Header headerStyle={{position: 'absolute', top: 14, left: 14}} />
 
             <View style={[styles.searchBox, styles.modalSearchBox]}>
               <View style={styles.searchRow}>
-                <Image source={require('../../assets/images/search-icon.png')} resizeMode="cover" />
+                <Image
+                  source={require('../../assets/images/search-icon.png')}
+                  resizeMode="cover"
+                />
                 <TextInput
                   placeholder="Try find “how to”"
                   style={styles.searchInput}
@@ -92,7 +110,7 @@ const LocationEmptyScreen = () => {
               <Image
                 source={require('../../assets/images/mic.png')}
                 resizeMode="cover"
-                style={{ borderLeftWidth: 4, borderColor: '#000' }}
+                style={{borderLeftWidth: 4, borderColor: '#000'}}
               />
             </View>
 
@@ -105,10 +123,15 @@ const LocationEmptyScreen = () => {
               />
               <View style={styles.locationRow}>
                 <View style={styles.locationIconBox}>
-                  <Image source={require('../../assets/images/location-pin-map.png')} resizeMode="cover" />
+                  <Image
+                    source={require('../../assets/images/location-pin-map.png')}
+                    resizeMode="cover"
+                  />
                 </View>
                 <AppText
-                  text={'Srengseng, Kembangan, West Jakarta City, Jakarta 11630'}
+                  text={
+                    'Srengseng, Kembangan, West Jakarta City, Jakarta 11630'
+                  }
                   fontSize={12}
                   color={Colors.mediumGray}
                   style={styles.locationText}
@@ -117,7 +140,7 @@ const LocationEmptyScreen = () => {
             </View>
 
             <AppButton
-              text='Choose your location'
+              text="Choose your location"
               containerStyle={styles.chooseLocationButton}
               onPress={() => setActiveModal(false)}
             />
@@ -235,6 +258,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 24,
     width: 278,
-    left: 70,
+    left:50,
+    marginHorizontal: 'auto',
   },
 });
