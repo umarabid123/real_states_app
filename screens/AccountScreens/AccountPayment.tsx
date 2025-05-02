@@ -39,7 +39,7 @@ const AccountPayment = () => {
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
       >
-        <View style={{ width: wp(90), paddingTop: 50, paddingBottom: 24 }}>
+        <View style={{ width: wp(85), paddingTop: 50, paddingBottom: 24 }}>
           <AppText
             text={'Add Your'}
             style={{ lineHeight: 40, paddingBottom: 20 }}
@@ -51,7 +51,7 @@ const AccountPayment = () => {
             subTextStyle={{ fontWeight: 800, color: '#234F68' }}
           />
           <AppText text={'You can edit this later on your account setting.'} fontSize={12} color={Colors.mediumGray} />
-          <Image source={require('../../assets/images/credit-card.png')} style={{ width: wp(90), resizeMode: 'contain' }} />
+          <Image source={require('../../assets/images/credit-card.png')} style={{ width: "100%", resizeMode: 'contain' }} />
 
           <FlatList
             data={paymentMethodData}
