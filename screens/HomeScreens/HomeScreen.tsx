@@ -108,49 +108,78 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      <FlatList
-        data={['All', 'House', 'Apartment', 'House', 'Apartment']}
-        renderItem={({item, index}) => (
-          <AppButton
-            text={item}
-            containerStyle={{
-              backgroundColor:
-                activeTab === index ? Colors.lightBlue : Colors.softGray,
-              width: 'auto',
-              height: 55,
-              justifyContent: 'center',
-              alignItems: 'center',
-              paddingHorizontal: 17,
-              borderRadius: 26,
-            }}
-            textStyle={{
-              color: activeTab === index ? Colors.white : Colors.secondary,
-              fontWeight: 500,
-            }}
-            onPress={() => setActiveTab(index)}
-          />
-        )}
-        horizontal
-        style={{marginTop: 20, gap: 10}}
-        ItemSeparatorComponent={() => <View style={{width: 10}} />}
-      />
+      <View style={{height: 120}}>
+        <FlatList
+          data={['All', 'House', 'Apartment', 'House', 'Apartment']}
+          renderItem={({item, index}) => (
+            <AppButton
+              text={item}
+              containerStyle={{
+                backgroundColor:
+                  activeTab === index ? Colors.lightBlue : Colors.softGray,
+                width: 'auto',
+                height: 55,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingHorizontal: 17,
+                borderRadius: 26,
+              }}
+              textStyle={{
+                color: activeTab === index ? Colors.white : Colors.secondary,
+                fontWeight: 500,
+              }}
+              onPress={() => setActiveTab(index)}
+            />
+          )}
+          horizontal
+          style={{marginTop: 20, gap: 10}}
+          ItemSeparatorComponent={() => <View style={{width: 10}} />}
+        />
+      </View>
 
-      <ImageBackground
-        source={require('../../assets/images/bg-img.png')}
-        resizeMode="cover" style={{width:270,height:180,position:'relative'}}>
-        <AppText
-          text={'Halloween Sale!'}
-          fontSize={18}
-          fontWeight={700}
-          color={Colors.white}
-        />
-          <AppText
-          text={'All discount up to 60%'}
-          fontSize={10}
-          color={Colors.white}
-        />
-        <AppButton type='icon' source={require('../../assets/images/right-arrow-icon.png')} containerStyle={{width:93, borderRadius:0, borderTopEndRadius:20, position:'absolute', bottom:0,left:0, backgroundColor:Colors.secondary,justifyContent:'center', padding:0,alignItem:'center' }} />
-      </ImageBackground>
+      <View
+        style={{
+          width: 270,
+          height: 180,
+          borderRadius: 30,
+          overflow: 'hidden',
+          backgroundColor: 'red', // for test
+        }}>
+        <ImageBackground
+          source={require('../../assets/images/bg-img.png')}
+          resizeMode="cover"
+          style={{width: '100%', height: '100%', justifyContent: 'center'}}>
+          <View style={{paddingLeft: 20}}>
+            <AppText
+              text={'Halloween Sale!'}
+              fontSize={18}
+              fontWeight={700}
+              color={Colors.white}
+            />
+            <AppText
+              text={'All discount up to 60%'}
+              fontSize={10}
+              color={Colors.white}
+            />
+          </View>
+          <AppButton
+            type="icon"
+            source={require('../../assets/images/right-arrow-icon.png')}
+            containerStyle={{
+              width: 93,
+              borderRadius: 0,
+              borderTopEndRadius: 20,
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              backgroundColor: Colors.secondary,
+              justifyContent: 'center',
+              padding: 0,
+              alignItem: 'center',
+            }}
+          />
+        </ImageBackground>
+      </View>
     </View>
   );
 };
