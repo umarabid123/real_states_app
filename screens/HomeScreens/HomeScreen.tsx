@@ -2,6 +2,7 @@ import {
   FlatList,
   Image,
   ImageBackground,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -15,6 +16,7 @@ import {wp} from '../../contexts/constant';
 import AppButton from '../../components/AppButton/AppButton';
 import FeatureCard from '../../components/FeatureCard/FeatureCard';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
+import CategoryHeading from '../../components/CategoryHeading/CategoryHeading';
 
 const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -80,83 +82,88 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      {/* welcome section  */}
-      <View style={{width: wp(90), marginTop: 35}}>
-        <AppText
-          text={'Hey,'}
-          type="subText"
-          fontSize={25}
-          fontWeight={500}
-          color={Colors.secondary}
-          subTextStyle={{fontWeight: 800}}
-          subText={"Jonathan! \nLet's start exploring"}
-        />
-        <View style={[styles.searchBox, styles.modalSearchBox]}>
-          <View style={styles.searchRow}>
+      <ScrollView>
+        {/* welcome section  */}
+        <View style={{width: wp(90), marginTop: 35}}>
+          <AppText
+            text={'Hey,'}
+            type="subText"
+            fontSize={25}
+            fontWeight={500}
+            color={Colors.secondary}
+            subTextStyle={{fontWeight: 800}}
+            subText={"Jonathan! \nLet's start exploring"}
+          />
+          <View style={[styles.searchBox, styles.modalSearchBox]}>
+            <View style={styles.searchRow}>
+              <Image
+                source={require('../../assets/images/search-icon.png')}
+                resizeMode="cover"
+              />
+              <TextInput
+                placeholder="Try find “how to”"
+                style={styles.searchInput}
+              />
+            </View>
             <Image
-              source={require('../../assets/images/search-icon.png')}
+              source={require('../../assets/images/mic.png')}
               resizeMode="cover"
-            />
-            <TextInput
-              placeholder="Try find “how to”"
-              style={styles.searchInput}
+              style={{borderLeftWidth: 4, borderColor: '#000'}}
             />
           </View>
-          <Image
-            source={require('../../assets/images/mic.png')}
-            resizeMode="cover"
-            style={{borderLeftWidth: 4, borderColor: '#000'}}
+        </View>
+
+        {/* category buttons  */}
+        <View style={{height: 120 }}>
+          <FlatList
+            data={['All', 'House', 'Apartment', 'House', 'Apartment']}
+            renderItem={({item, index}) => (
+              <AppButton
+                text={item}
+                containerStyle={{
+                  backgroundColor:
+                    activeTab === index ? Colors.lightBlue : Colors.softGray,
+                  width: 'auto',
+                  height: 55,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingHorizontal: 17,
+                  borderRadius: 26,
+                }}
+                textStyle={{
+                  color: activeTab === index ? Colors.white : Colors.secondary,
+                  fontWeight: 500,
+                }}
+                onPress={() => setActiveTab(index)}
+              />
+            )}
+            horizontal
+            style={{marginTop: 20, gap: 10}}
+            ItemSeparatorComponent={() => <View style={{width: 10}} />}
+            showsHorizontalScrollIndicator={false}
           />
         </View>
-      </View>
 
-      {/* category buttons  */}
-      <View style={{height: 120}}>
+        {/* Category card section top  */}
         <FlatList
-          data={['All', 'House', 'Apartment', 'House', 'Apartment']}
-          renderItem={({item, index}) => (
-            <AppButton
-              text={item}
-              containerStyle={{
-                backgroundColor:
-                  activeTab === index ? Colors.lightBlue : Colors.softGray,
-                width: 'auto',
-                height: 55,
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingHorizontal: 17,
-                borderRadius: 26,
-              }}
-              textStyle={{
-                color: activeTab === index ? Colors.white : Colors.secondary,
-                fontWeight: 500,
-              }}
-              onPress={() => setActiveTab(index)}
-            />
-          )}
+          data={[1, 2, 3, 4, 5]}
+          renderItem={({item}) => <CategoryCard />}
           horizontal
-          style={{marginTop: 20, gap: 10}}
-          ItemSeparatorComponent={() => <View style={{width: 10}} />}
-          showsHorizontalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={{width: 20}} />}
+          style={{marginBottom:26}}
         />
-      </View>
 
-      {/* Category card section top  */}
-      <FlatList
-        data={[1, 2, 3, 4, 5]}
-        renderItem={({item}) => <CategoryCard />}
-        horizontal
-        ItemSeparatorComponent={() => <View style={{width: 20}} />}
-      />
-
-      {/* Feature Card section  */}
-      <FlatList
-        data={[1, 2, 3, 4, 5]}
-        renderItem={({item}) => <FeatureCard />}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{width: 10}} />}
-      />
+        {/* Feature Card section  */}
+        <CategoryHeading title='Featured Estates' viewText='view all' />
+        <FlatList
+          data={[1, 2, 3, 4, 5]}
+          renderItem={({item}) => <FeatureCard />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={{width: 10}} />}
+        />
+         <CategoryHeading title='Top Locations' viewText='explore' />
+      </ScrollView>
     </View>
   );
 };
