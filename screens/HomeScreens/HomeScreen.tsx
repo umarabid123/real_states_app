@@ -22,6 +22,7 @@ const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <View style={[globalStyle.container, {justifyContent: 'flex-start'}]}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       {/* header  */}
       <View
         style={{
@@ -82,7 +83,6 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      <ScrollView>
         {/* welcome section  */}
         <View style={{width: wp(90), marginTop: 35}}>
           <AppText
